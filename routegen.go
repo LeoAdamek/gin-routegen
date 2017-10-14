@@ -19,11 +19,11 @@ import gin "{{.Import}}"
 
 // {{.Func}} is an auto-generated function which
 // will create routes based on a given route spec.
-func {{.Func}}(g *gin.Gin) {
+func {{.Func}}(g *gin.Engine) {
 {{range .Routes}}{{if $verbose}}
   // {{.SourceSpec}}
 {{end}}
-  gin.{{.Method}}("{{.RouteSpec}}", {{.Handler}}){{end}}
+  g.{{.Method}}("{{.RouteSpec}}", {{.Handler}}){{end}}
 }
 `
 
@@ -133,7 +133,7 @@ func main() {
 				route{
 					SourceSpec: routeSpec,
 					Method:     "GET",
-					RouteSpec:  pathSpec + "/:id",
+					RouteSpec:  pathSpec + "/view/:id",
 					Handler:    handler + "{}.Show",
 				},
 
@@ -147,7 +147,7 @@ func main() {
 				route{
 					SourceSpec: routeSpec,
 					Method:     "GET",
-					RouteSpec:  pathSpec + "/edit",
+					RouteSpec:  pathSpec + "/edit/:id",
 					Handler:    handler + "{}.Edit",
 				},
 
@@ -168,28 +168,28 @@ func main() {
 				route{
 					SourceSpec: routeSpec,
 					Method:     "PATCH",
-					RouteSpec:  pathSpec + "/:id",
+					RouteSpec:  pathSpec + "/update/:id",
 					Handler:    handler + "{}.Update",
 				},
 
 				route{
 					SourceSpec: routeSpec,
 					Method:     "POST",
-					RouteSpec:  pathSpec + "/:id",
+					RouteSpec:  pathSpec + "/update/:id",
 					Handler:    handler + "{}.Update",
 				},
 
 				route{
 					SourceSpec: routeSpec,
 					Method:     "DELETE",
-					RouteSpec:  pathSpec + "/:id",
+					RouteSpec:  pathSpec + "/delete/:id",
 					Handler:    handler + "{}.Delete",
 				},
 
 				route{
 					SourceSpec: routeSpec,
 					Method:     "POST",
-					RouteSpec:  pathSpec + "/:id/delete",
+					RouteSpec:  pathSpec + "/delete/:id",
 					Handler:    handler + "{}.Delete",
 				},
 			}
