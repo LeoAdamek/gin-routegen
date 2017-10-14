@@ -1,0 +1,12 @@
+// Lines starting with `//` are comments.
+// Resource Examples
+
+RESOURCE /users    handlers.UserResource
+RESOURCE /pages    handlers.PagesHandler
+
+// Single Route examples
+
+
+GET     /          handlers.PagesHandler.Home
+GET     /:id       handlers.PageHandler.Show
+
