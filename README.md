@@ -15,7 +15,13 @@ Usage:
 ------
 
 See `gin-routegen -h`
-You can specify this 
+
+You can integrate the generation into `go generate` by specifying the generator in
+a source file.
+
+~~~~go
+    //go:generate gin-routegen -i routes.txt -o routes.go -p main -f createRoutes
+~~~~
 
 Routing File Syntax
 -------------------
